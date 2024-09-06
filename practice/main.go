@@ -1,31 +1,32 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
-	"strings"
+	"math"
 )
 
 /*
  * Reference: Chapter 2 > Lesson 3
  *
- * We learned how to receive other tipes of variables from the terminal and how to convert it to correspondent type
+ * We learned the behavior of some math calculations with float variables and how to round the values and show them.
  */
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Enter text: ")
-	input, _ := reader.ReadString('\n')
-	fmt.Println("You entered: ", input)
+	i1, i2, i3 := 12, 45, 68
+	intSum := i1 + i2 + i3
+	fmt.Println(intSum)
 
-	fmt.Print("Enter a number: ")
-	numInput, _ := reader.ReadString('\n')
-	aFloat, err := strconv.ParseFloat(strings.TrimSpace(numInput), 64)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println("Value of number: ", aFloat)
-	}
+	f1, f2, f3 := 23.5, 65.1, 76.3
+	floatSum := f1 + f2 + f3
+	fmt.Println(floatSum)
+
+	floatSum2 := math.Round(floatSum)
+	fmt.Println("the sum is now", floatSum2)
+
+	floatSum3 := math.Round(floatSum*100) / 100
+	fmt.Println("the sum is now", floatSum3)
+
+	circleRadius := 15.5
+	circumference := circleRadius * 2 * math.Pi
+	fmt.Printf("Circumference: %.2f\n", circumference)
 }
