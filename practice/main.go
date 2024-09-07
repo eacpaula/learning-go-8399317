@@ -2,31 +2,23 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"time"
 )
 
 /*
- * Reference: Chapter 2 > Lesson 3
+ * Reference: Chapter 2 > Lesson 7
  *
- * We learned the behavior of some math calculations with float variables and how to round the values and show them.
+ * We learned how to work with time lib
  */
 
 func main() {
-	i1, i2, i3 := 12, 45, 68
-	intSum := i1 + i2 + i3
-	fmt.Println(intSum)
+	n := time.Now()
+	fmt.Println("I recorded this video at: \n", n)
 
-	f1, f2, f3 := 23.5, 65.1, 76.3
-	floatSum := f1 + f2 + f3
-	fmt.Println(floatSum)
+	t := time.Date(2008, time.November, 10, 23, 0, 0, 0, time.UTC)
+	fmt.Println("Go launched at: \n", t)
+	fmt.Println(t.Format(time.ANSIC))
 
-	floatSum2 := math.Round(floatSum)
-	fmt.Println("the sum is now", floatSum2)
-
-	floatSum3 := math.Round(floatSum*100) / 100
-	fmt.Println("the sum is now", floatSum3)
-
-	circleRadius := 15.5
-	circumference := circleRadius * 2 * math.Pi
-	fmt.Printf("Circumference: %.2f\n", circumference)
+	parsedTime, _ := time.Parse(time.ANSIC, "Mon Nov 10 23:00:00 2008")
+	fmt.Printf("The type of parsedTime is %T\n", parsedTime)
 }
