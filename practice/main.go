@@ -2,23 +2,24 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 /*
- * Reference: Chapter 2 > Lesson 7
+ * Reference: Chapter 3 > Lesson 2
  *
- * We learned how to work with time lib
+ * Learning how pointers works on go
  */
 
 func main() {
-	n := time.Now()
-	fmt.Println("I recorded this video at: \n", n)
+	anInt := 47
+	var p = &anInt
+	fmt.Println("Value of p:", *p)
 
-	t := time.Date(2008, time.November, 10, 23, 0, 0, 0, time.UTC)
-	fmt.Println("Go launched at: \n", t)
-	fmt.Println(t.Format(time.ANSIC))
+	value1 := 42.13
+	pointer1 := &value1
+	fmt.Println("Value of pointer1:", *pointer1)
 
-	parsedTime, _ := time.Parse(time.ANSIC, "Mon Nov 10 23:00:00 2008")
-	fmt.Printf("The type of parsedTime is %T\n", parsedTime)
+	*pointer1 = *pointer1 / 31
+	fmt.Println("Value of pointer1:", *pointer1)
+	fmt.Println("Value of value1:", value1)
 }
