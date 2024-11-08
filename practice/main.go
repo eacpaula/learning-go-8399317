@@ -12,29 +12,37 @@ import (
  */
 
 func main() {
-	var colors = []string{"Red", "Green", "Blue"}
-	fmt.Println("The colors are:", colors)
+	states := make(map[string]string)
+	fmt.Println(states)
 
-	colors = append(colors, "Yellow")
-	fmt.Println("The colors are:", colors)
+	states["NY"] = "New York"
+	states["NJ"] = "New Jersey"
+	states["CA"] = "California"
 
-	colors = append(colors[1:len(colors)])
-	fmt.Println("The colors are:", colors)
+	fmt.Println(states)
 
-	colors = append(colors[:len(colors)-1])
-	fmt.Println("The colors are:", colors)
+	newYork := states["NY"]
+	fmt.Println(newYork)
 
-	number := make([]int, 5)
-	number[0] = 1
-	number[1] = 2
-	number[2] = 3
-	number[3] = 4
-	number[4] = 5
-	fmt.Println("The numbers are:", number)
+	delete(states, "NJ")
 
-	number = append(number, 6)
-	fmt.Println("The numbers are:", number)
+	fmt.Println(states)
 
-	sort.Sort(sort.Reverse(sort.IntSlice(number)))
-	fmt.Println("The numbers in descending order are:", number)
+	states["WA"] = "Washington"
+	fmt.Println(states)
+
+	for key, value := range states {
+		fmt.Println(key, value)
+	}
+
+	keys := make([]string, 0, len(states))
+	for key := range states {
+		keys = append(keys, key)
+	}
+	fmt.Println(keys)
+
+	sort.Strings(keys)
+	for _, key := range keys {
+		fmt.Println(key, states[key])
+	}
 }
