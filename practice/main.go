@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 /*
@@ -11,17 +12,29 @@ import (
  */
 
 func main() {
-	var colors [3]string
-	colors[0] = "Red"
-	colors[1] = "Green"
-	colors[2] = "Blue"
-
+	var colors = []string{"Red", "Green", "Blue"}
 	fmt.Println("The colors are:", colors)
-	fmt.Println("The first color is:", colors[0])
 
-	var numbers = [5]int{1, 2, 3, 4, 5}
-	fmt.Println("The numbers are:", numbers)
+	colors = append(colors, "Yellow")
+	fmt.Println("The colors are:", colors)
 
-	fmt.Println("Number of colors:", len(colors))
-	fmt.Println("Number of numbers:", len(numbers))
+	colors = append(colors[1:len(colors)])
+	fmt.Println("The colors are:", colors)
+
+	colors = append(colors[:len(colors)-1])
+	fmt.Println("The colors are:", colors)
+
+	number := make([]int, 5)
+	number[0] = 1
+	number[1] = 2
+	number[2] = 3
+	number[3] = 4
+	number[4] = 5
+	fmt.Println("The numbers are:", number)
+
+	number = append(number, 6)
+	fmt.Println("The numbers are:", number)
+
+	sort.Sort(sort.Reverse(sort.IntSlice(number)))
+	fmt.Println("The numbers in descending order are:", number)
 }
