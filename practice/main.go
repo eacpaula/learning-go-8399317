@@ -2,35 +2,49 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 /*
- * Reference: Chapter 4 > Lesson 1
+ * Reference: Chapter 4 > Lesson 2
  *
- * Base concepts about conditionals
+ * Evaluate expressions with switch statements
  */
 
 func main() {
-	theAnwser := 42
+	t := time.Now().Unix()
+	fmt.Println("Today is", t)
+
+	r := rand.New(rand.NewSource(t))
+
 	var result string
 
-	if theAnwser < 0 {
-		result = "Less than zero"
-	} else if theAnwser > 0 {
-		result = "Greater than zero"
-	} else {
-		result = "Equal to zero"
+	switch dow := r.Intn(7) + 1; dow {
+	case 1:
+		result = "Sunday"
+		// fallthrough
+	case 2:
+		result = "Monday"
+		// fallthrough
+	case 3:
+		result = "Tuesday"
+		// fallthrough
+	case 4:
+		result = "Wednesday"
+		// fallthrough
+	case 5:
+		result = "Thursday"
+		// fallthrough
+	case 6:
+		result = "Friday"
+		// fallthrough
+	case 7:
+		result = "Saturday"
+		// fallthrough
+	default:
+		result = "Unknown"
 	}
 
-	fmt.Println(result)
-
-	if x := -42; x < 0 {
-		result = "Less than zero"
-	} else if x > 0 {
-		result = "Greater than zero"
-	} else {
-		result = "Equal to zero"
-	}
-
-	fmt.Println(result)
+	fmt.Println("Today is", result)
 }
