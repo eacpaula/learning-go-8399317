@@ -5,22 +5,32 @@ import (
 )
 
 /*
- * Reference: Chapter 3 > Lesson 6
+ * Reference: Chapter 4 > Lesson 1
  *
- * Store ordered values in array
+ * Base concepts about conditionals
  */
 
 func main() {
-	poodle := Dog{"Poodle", 10}
-	fmt.Println(poodle)
-	fmt.Printf("%+v\n", poodle)
-	fmt.Printf("Breed: %v\nWeight: %d\n", poodle.Breed, poodle.Weight)
-	poodle.Weight = 15
-	fmt.Printf("Breed: %v\nWeight: %d\n", poodle.Breed, poodle.Weight)
-}
+	theAnwser := 42
+	var result string
 
-// Dog struct
-type Dog struct {
-	Breed  string
-	Weight int
+	if theAnwser < 0 {
+		result = "Less than zero"
+	} else if theAnwser > 0 {
+		result = "Greater than zero"
+	} else {
+		result = "Equal to zero"
+	}
+
+	fmt.Println(result)
+
+	if x := -42; x < 0 {
+		result = "Less than zero"
+	} else if x > 0 {
+		result = "Greater than zero"
+	} else {
+		result = "Equal to zero"
+	}
+
+	fmt.Println(result)
 }
