@@ -2,49 +2,52 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
 /*
- * Reference: Chapter 4 > Lesson 2
+ * Reference: Chapter 4 > Lesson 3
  *
- * Evaluate expressions with switch statements
+ * Create loops with for statements
  */
 
 func main() {
-	t := time.Now().Unix()
-	fmt.Println("Today is", t)
+	colors := []string{"red", "green", "blue", "yellow", "black", "white"}
+	fmt.Println(colors)
 
-	r := rand.New(rand.NewSource(t))
-
-	var result string
-
-	switch dow := r.Intn(7) + 1; dow {
-	case 1:
-		result = "Sunday"
-		// fallthrough
-	case 2:
-		result = "Monday"
-		// fallthrough
-	case 3:
-		result = "Tuesday"
-		// fallthrough
-	case 4:
-		result = "Wednesday"
-		// fallthrough
-	case 5:
-		result = "Thursday"
-		// fallthrough
-	case 6:
-		result = "Friday"
-		// fallthrough
-	case 7:
-		result = "Saturday"
-		// fallthrough
-	default:
-		result = "Unknown"
+	// range loop to iterate over a slice of strings and print each element in the slice
+	for i := 0; i < len(colors); i++ {
+		fmt.Println(colors[i])
 	}
 
-	fmt.Println("Today is", result)
+	// range loop to iterate over a slice of strings and print each element in the slice
+	for i := range colors {
+		fmt.Printf(colors[i])
+	}
+
+	// range loop to iterate over a slice of strings and print the index and value of each element in the slice
+	for _, color := range colors {
+		fmt.Println(color)
+	}
+
+	// for loop to iterate over a range of numbers and print each number in the range
+	value := 1
+	for value < 10 {
+		fmt.Println(value)
+		value++
+	}
+
+	// for loop to iterate over a range of numbers and print each number in the range
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+		fmt.Println(sum)
+		if sum > 200 {
+			goto theEnd
+		}
+	}
+
+	// label to jump to
+theEnd:
+	fmt.Println("The end")
+
 }
