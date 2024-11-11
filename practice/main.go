@@ -5,49 +5,44 @@ import (
 )
 
 /*
- * Reference: Chapter 4 > Lesson 3
+ * Reference: Chapter 5 > Lesson 1
  *
- * Create loops with for statements
+ * Define and call functions
  */
 
 func main() {
-	colors := []string{"red", "green", "blue", "yellow", "black", "white"}
-	fmt.Println(colors)
+	doSomething()
 
-	// range loop to iterate over a slice of strings and print each element in the slice
-	for i := 0; i < len(colors); i++ {
-		fmt.Println(colors[i])
+	result := addValues(1, 2)
+	fmt.Println(result)
+
+	total := addAllValues(1, 2, 3, 4, 5)
+	fmt.Println(total)
+
+	total, quantity := addAllValues2(1, 2, 3, 4, 5)
+	fmt.Println(total, quantity)
+}
+
+func doSomething() {
+	fmt.Println("Do something")
+}
+
+func addValues(a, b int) int {
+	return a + b
+}
+
+func addAllValues(values ...int) int {
+	total := 0
+	for _, value := range values {
+		total += value
 	}
+	return total
+}
 
-	// range loop to iterate over a slice of strings and print each element in the slice
-	for i := range colors {
-		fmt.Printf(colors[i])
+func addAllValues2(values ...int) (total int, quantity int) {
+	for _, value := range values {
+		total += value
 	}
-
-	// range loop to iterate over a slice of strings and print the index and value of each element in the slice
-	for _, color := range colors {
-		fmt.Println(color)
-	}
-
-	// for loop to iterate over a range of numbers and print each number in the range
-	value := 1
-	for value < 10 {
-		fmt.Println(value)
-		value++
-	}
-
-	// for loop to iterate over a range of numbers and print each number in the range
-	sum := 1
-	for sum < 1000 {
-		sum += sum
-		fmt.Println(sum)
-		if sum > 200 {
-			goto theEnd
-		}
-	}
-
-	// label to jump to
-theEnd:
-	fmt.Println("The end")
-
+	quantity = len(values)
+	return
 }
